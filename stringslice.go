@@ -2,23 +2,23 @@ package stringslice
 
 import "fmt"
 
-// Define a type named "stringSlice" as a slice of strings
+// Define a type named "StringSlice" as a slice of strings
 
-type stringSlice []string
+type StringSlice []string
 
 // This is mainly for use with the flags package
-func (i *stringSlice) String() string {
+func (i *StringSlice) String() string {
 	return fmt.Sprint(*i)
 }
 
 // This method is also required by the flags package
-func (i *stringSlice) Set(value string) error {
+func (i *StringSlice) Set(value string) error {
 	*i = append(*i, value)
 	return nil
 }
 
-// This compares one object of stringSlice type with another
-func (p *stringSlice) Compare(a *stringSlice) bool {
+// This compares one object of StringSlice type with another
+func (p *StringSlice) Compare(a *StringSlice) bool {
 	b := []string(*a)
 	// simple case
 	if len(*p) != len(b) {
@@ -34,8 +34,8 @@ func (p *stringSlice) Compare(a *stringSlice) bool {
 }
 
 // Conventional shortcut
-func New(a string) *stringSlice {
-	foo := new(stringSlice)
+func New(a string) *StringSlice {
+	foo := new(StringSlice)
 	foo.Set(a)
 	return foo
 }
